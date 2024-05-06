@@ -1,6 +1,7 @@
 import './App.css'
 import {TodoProvidor} from "./contexts/index.js";
 import {useEffect, useState} from "react";
+import TodoForm from "./components/TodoForm.jsx";
 
 function App() {
 
@@ -43,7 +44,7 @@ function App() {
 
   return (
     <TodoProvidor value={{todos, addTodo, updateTodo, deleteTodo, toggleComplete}}>
-
+      <TodoForm />
     </TodoProvidor>
   )
 }
