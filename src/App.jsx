@@ -1,32 +1,31 @@
 import './App.css'
 import {TodoProvider} from "./contexts/index.js";
 import {useEffect, useState} from "react";
-import TodoForm from "./components/TodoForm.jsx";
-import {TodoItem} from "./components/index.js";
+import {TodoItem, TodoForm} from "./components/index.js";
 
 function App() {
 
   const [todos, setTodos] = useState([]);
 
   const addTodo = (todo) => {
-    setTodos((prev) => [{id:Date.now(), ...todo}, ...prev]);
+    setTodos((prev) => [{id:Date.now(), ...todo}, ...prev])
   }
 
   const updateTodo = (id, todo) => {
     setTodos( (prev) => prev.map( (prevTodo) => (
-        prevTodo.id === id ? todo : prevTodo
+        prevTodo.id === todo.id ? todo : prevTodo
     ) ) )
   }
 
   const deleteTodo = (id) => {
-    setTodos((prev) => prev.filter((todo) => todo.id != id))
+    setTodos((prev) => prev.filter((todo) => todo.id !== id))
   }
 
   const toggleComplete = (id) => {
     setTodos((prev) => {
-      prev.map((prevTodo) => {
+      prev.map((prevTodo) =>
         prevTodo.id === id ? {...prevTodo, completed : !prevTodo.completed} : prevTodo
-      })
+      )
     })
   }
 
